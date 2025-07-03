@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     
+    <!-- Supabaseのスクリプトを読み込みます -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
@@ -49,6 +50,7 @@
 </head>
 <body class="text-gray-800">
 
+    <!-- ログイン状態の時に表示されるメインコンテンツ -->
     <div id="app-container" class="hidden">
         <div class="container mx-auto px-4 py-8">
             <header class="text-center mb-8 flex justify-between items-center">
@@ -228,41 +230,8 @@
                             <h2 class="text-3xl font-bold text-gray-800">用語・計算式リファレンス</h2>
                             <p class="text-gray-500 mt-2">広告予算の策定に必要な主要な指標と計算式の一覧です。</p>
                         </div>
-                        <div class="space-y-8 max-w-6xl mx-auto">
-                           <div>
-                                <h3 class="text-2xl font-semibold text-teal-700 border-b-2 border-teal-200 pb-2 mb-4">基本指標</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-teal-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">👀 IMP (Impression)</h3><p class="text-gray-600 mt-2 text-sm">広告が表示された回数。すべての広告活動の基点となります。</p></div>
-                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-teal-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">👆 CTR (クリック率)</h3><p class="text-gray-600 mt-2 text-sm">広告が表示されたうち、クリックされた割合。広告クリエイティブやターゲットの魅力度を示します。</p><div class="mt-4 space-y-2"><div class="formula">CTR(%) = (クリック数 ÷ IMP) × 100</div></div></div>
-                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-teal-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">🎯 CV (コンバージョン)</h3><p class="text-gray-600 mt-2 text-sm">広告主にとって価値のある、ユーザーの特定のアクション（例：商品購入、問い合わせ）。</p></div>
-                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-teal-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">📊 CVR (コンバージョン率)</h3><p class="text-gray-600 mt-2 text-sm">広告クリックのうち、CVに至った割合。LPの有効性を示す重要指標。</p><div class="mt-4 space-y-2"><div class="formula">CVR(%) = (CV数 ÷ クリック数) × 100</div></div></div>
-                                </div>
-                            </div>
-                            <div>
-                                <h3 class="text-2xl font-semibold text-sky-700 border-b-2 border-sky-200 pb-2 mb-4">コスト指標</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-sky-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">🖱️ CPC (クリック単価)</h3><p class="text-gray-600 mt-2 text-sm">広告が1回クリックされるたびに発生する費用。</p><div class="mt-4 space-y-2"><div class="formula">CPC = 広告費 ÷ クリック数</div></div></div>
-                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-sky-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">👁️ CPM (インプレッション単価)</h3><p class="text-gray-600 mt-2 text-sm">広告が1000回表示されるたびにかかる費用。認知度向上の指標として用いられます。</p><div class="mt-4 space-y-2"><div class="formula">CPM = (広告費 ÷ IMP) × 1000</div></div></div>
-                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-sky-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">💰 CPA (顧客獲得単価)</h3><p class="text-gray-600 mt-2 text-sm">1件のCVを獲得するためにかかった費用。費用対効果の最重要指標の一つ。</p><div class="mt-4 space-y-2"><div class="formula">CPA = 広告費 ÷ CV数</div><div class="formula">CPA = CPC ÷ CVR</div></div></div>
-                                </div>
-                            </div>
-                            <div>
-                                 <h3 class="text-2xl font-semibold text-green-700 border-b-2 border-green-200 pb-2 mb-4">収益性指標</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">📈 ROAS (広告費用対効果)</h3><p class="text-gray-600 mt-2 text-sm">広告費に対してどれだけの売上が発生したかを示す指標。ECサイトで特に重要視されます。</p><div class="mt-4 space-y-2"><div class="formula">ROAS(%) = (売上 ÷ 広告費) × 100</div></div></div>
-                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">💹 ROI (投資利益率)</h3><p class="text-gray-600 mt-2 text-sm">投下した広告費から、どれだけの利益が生まれたかを示す指標。より事業貢献度を測れます。</p><div class="mt-4 space-y-2"><div class="formula">ROI(%) = (利益 ÷ 広告費) × 100</div></div></div>
-                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-red-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">🛑 限界CPA</h3><p class="text-gray-600 mt-2 text-sm">1CVあたりにかけられる広告費の上限額。これを超えると赤字になる損益分岐点。</p><div class="mt-4 space-y-2"><div class="formula">限界CPA = 平均顧客単価 − 原価</div></div></div>
-                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-blue-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">✅ 目標CPA</h3><p class="text-gray-600 mt-2 text-sm">目標利益を確保するために、1CVあたりに許容される広告費。</p><div class="mt-4 space-y-2"><div class="formula">目標CPA = 限界CPA − 確保したい利益</div></div></div>
-                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">👑 LTV (顧客生涯価値)</h3><p class="text-gray-600 mt-2 text-sm">一人の顧客が取引期間全体でもたらす総利益。リピート商材で重要。</p><div class="mt-4 space-y-2"><div class="formula">LTV = 顧客単価 × 粗利率 × 購買頻度 × 契約期間</div></div></div>
-                                </div>
-                            </div>
-                              <div>
-                                <h3 class="text-2xl font-semibold text-purple-700 border-b-2 border-purple-200 pb-2 mb-4">計画立案指標</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-purple-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">🔢 必要CV数</h3><p class="text-gray-600 mt-2 text-sm">設定した目標利益を達成するために必要なCVの件数。</p><div class="mt-4 space-y-2"><div class="formula">必要CV数 = 目標利益 ÷ 1CVあたりの利益</div></div></div>
-                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-purple-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">💸 必要広告予算</h3><p class="text-gray-600 mt-2 text-sm">算出された数値を基に、最終的に必要となる広告費用の総額。</p><div class="mt-4 space-y-2"><div class="formula">必要広告予算 = 必要CV数 × 目標CPA</div></div></div>
-                                </div>
-                            </div>
+                        <div id="knowledge-container" class="space-y-8 max-w-6xl mx-auto">
+                           <!-- 用語集がここに挿入されます -->
                         </div>
                     </div>
                 </section>
@@ -273,6 +242,7 @@
         </div>
     </div>
 
+    <!-- ログアウト状態の時に表示されるメッセージ -->
     <div id="login-prompt">
         <div class="min-h-screen flex items-center justify-center bg-gray-50">
             <div class="max-w-md w-full bg-white p-8 rounded-xl shadow-lg text-center">
@@ -402,23 +372,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-    // ★【修正点】ここが「お出迎え機能」の追加箇所です ★
+    // ★【最終修正】堅牢な認証フローに書き換えました ★
     // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-    supabaseClient.auth.onAuthStateChange(async (event, session) => {
-        // ログイン、ログアウト、トークン更新など、認証状態が変わるたびに実行
-        updateUserState(session ? session.user : null);
 
-        // ★ 新規登録後、メールのリンクから戻ってきた場合（SIGNED_INイベント）の特別処理
-        if (event === 'SIGNED_IN' && !plannerInitialized) {
-            // URLからハッシュ（#以降）を削除して、見た目をクリーンにする
-            history.replaceState(null, null, window.location.pathname);
-        }
-    });
-
-    // 初期読み込み時のセッション情報を確認
-    // （お出迎え機能の本質ではないが、ページリロード時のログイン維持に役立つ）
+    // 1. まず最初に現在のセッションを確認する
     supabaseClient.auth.getSession().then(({ data: { session } }) => {
         updateUserState(session ? session.user : null);
+
+        // 2. 次に、その後の認証状態の変化を監視する
+        supabaseClient.auth.onAuthStateChange((_event, session) => {
+            updateUserState(session ? session.user : null);
+            // メールリンクから戻ってきた場合、URLから不要な情報を削除して見た目をきれいにする
+            if (_event === "SIGNED_IN" || _event === "USER_UPDATED") {
+                history.replaceState({}, document.title, window.location.pathname);
+            }
+        });
     });
 });
 
@@ -1053,6 +1021,55 @@ function initializePlanner() {
         }));
     }
 
+    function populateKnowledge() {
+        const container = document.getElementById('knowledge-container');
+        if (!container) return;
+        const knowledgeData = [
+            { category: '基本指標', color: 'teal', items: [
+                { term: 'IMP (Impression)', desc: '広告が表示された回数。すべての広告活動の基点となります。' },
+                { term: 'CTR (クリック率)', desc: '広告が表示されたうち、クリックされた割合。広告クリエイティブやターゲットの魅力度を示します。', formula: 'CTR(%) = (クリック数 ÷ IMP) × 100' },
+                { term: 'CV (コンバージョン)', desc: '広告主にとって価値のある、ユーザーの特定のアクション（例：商品購入、問い合わせ）。' },
+                { term: 'CVR (コンバージョン率)', desc: '広告クリックのうち、CVに至った割合。LPの有効性を示す重要指標。', formula: 'CVR(%) = (CV数 ÷ クリック数) × 100' }
+            ]},
+            { category: 'コスト指標', color: 'sky', items: [
+                { term: 'CPC (クリック単価)', desc: '広告が1回クリックされるたびに発生する費用。', formula: 'CPC = 広告費 ÷ クリック数' },
+                { term: 'CPM (インプレッション単価)', desc: '広告が1000回表示されるたびにかかる費用。認知度向上の指標として用いられます。', formula: 'CPM = (広告費 ÷ IMP) × 1000' },
+                { term: 'CPA (顧客獲得単価)', desc: '1件のCVを獲得するためにかかった費用。費用対効果の最重要指標の一つ。', formulas: ['CPA = 広告費 ÷ CV数', 'CPA = CPC ÷ CVR'] }
+            ]},
+            { category: '収益性指標', color: 'green', items: [
+                { term: 'ROAS (広告費用対効果)', desc: '広告費に対してどれだけの売上が発生したかを示す指標。ECサイトで特に重要視されます。', formula: 'ROAS(%) = (売上 ÷ 広告費) × 100' },
+                { term: 'ROI (投資利益率)', desc: '投下した広告費から、どれだけの利益が生まれたかを示す指標。より事業貢献度を測れます。', formula: 'ROI(%) = (利益 ÷ 広告費) × 100' },
+                { term: '限界CPA', desc: '1CVあたりにかけられる広告費の上限額。これを超えると赤字になる損益分岐点。', formula: '限界CPA = 平均顧客単価 − 原価' },
+                { term: '目標CPA', desc: '目標利益を確保するために、1CVあたりに許容される広告費。', formula: '目標CPA = 限界CPA − 確保したい利益' },
+                { term: 'LTV (顧客生涯価値)', desc: '一人の顧客が取引期間全体でもたらす総利益。リピート商材で重要。', formula: 'LTV = 顧客単価 × 粗利率 × 購買頻度 × 契約期間' }
+            ]},
+            { category: '計画立案指標', color: 'purple', items: [
+                { term: '必要CV数', desc: '設定した目標利益を達成するために必要なCVの件数。', formula: '必要CV数 = 目標利益 ÷ 1CVあたりの利益' },
+                { term: '必要広告予算', desc: '算出された数値を基に、最終的に必要となる広告費用の総額。', formula: '必要広告予算 = 必要CV数 × 目標CPA' }
+            ]}
+        ];
+
+        let html = '';
+        knowledgeData.forEach(cat => {
+            html += `
+                <div>
+                    <h3 class="text-2xl font-semibold text-${cat.color}-700 border-b-2 border-${cat.color}-200 pb-2 mb-4">${cat.category}</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        ${cat.items.map(item => `
+                            <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-${cat.color}-500">
+                                <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">${item.term}</h3>
+                                <p class="text-gray-600 mt-2 text-sm">${item.desc}</p>
+                                ${item.formula ? `<div class="mt-4 space-y-2"><div class="formula">${item.formula}</div></div>` : ''}
+                                ${item.formulas ? `<div class="mt-4 space-y-2">${item.formulas.map(f => `<div class="formula">${f}</div>`).join('')}</div>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    }
+
     function showLoading(title) { aiResultContainer.innerHTML = `<div class="bg-gray-50 p-6 rounded-lg text-center"><h3 class="text-lg font-semibold text-teal-800 mb-4">${title}</h3><div class="flex justify-center items-center"><div class="loader"></div><p class="ml-4 text-gray-600">AIが生成中です。しばらくお待ちください...</p></div></div>`; }
     function showError(message) { aiResultContainer.innerHTML = `<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg" role="alert"><strong class="font-bold">エラーが発生しました:</strong><span class="block sm:inline"> ${message}</span></div>`; }
     
@@ -1467,6 +1484,10 @@ function initializePlanner() {
     populateCaseStudies();
     populateBenchmarks();
     populateOptimizationGuide();
+    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+    // ★【修正点】用語集を生成する関数を呼び出します ★
+    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+    populateKnowledge();
 }
 </script>
 
