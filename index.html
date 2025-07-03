@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <!-- Supabaseのスクリプトを読み込みます -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
@@ -50,7 +49,6 @@
 </head>
 <body class="text-gray-800">
 
-    <!-- ログイン状態の時に表示されるメインコンテンツ -->
     <div id="app-container" class="hidden">
         <div class="container mx-auto px-4 py-8">
             <header class="text-center mb-8 flex justify-between items-center">
@@ -71,8 +69,7 @@
             </nav>
 
             <main>
-                <!-- ... 既存のツールコンテンツは変更なし ... -->
-                 <section id="simulator" class="content-section">
+                <section id="simulator" class="content-section">
                     <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
                         <div class="text-center mb-6">
                             <h2 class="text-2xl font-bold text-gray-800">予算シミュレーター</h2>
@@ -232,7 +229,40 @@
                             <p class="text-gray-500 mt-2">広告予算の策定に必要な主要な指標と計算式の一覧です。</p>
                         </div>
                         <div class="space-y-8 max-w-6xl mx-auto">
-                            <!-- 用語解説コンテンツはここに挿入されます -->
+                           <div>
+                                <h3 class="text-2xl font-semibold text-teal-700 border-b-2 border-teal-200 pb-2 mb-4">基本指標</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-teal-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">👀 IMP (Impression)</h3><p class="text-gray-600 mt-2 text-sm">広告が表示された回数。すべての広告活動の基点となります。</p></div>
+                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-teal-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">👆 CTR (クリック率)</h3><p class="text-gray-600 mt-2 text-sm">広告が表示されたうち、クリックされた割合。広告クリエイティブやターゲットの魅力度を示します。</p><div class="mt-4 space-y-2"><div class="formula">CTR(%) = (クリック数 ÷ IMP) × 100</div></div></div>
+                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-teal-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">🎯 CV (コンバージョン)</h3><p class="text-gray-600 mt-2 text-sm">広告主にとって価値のある、ユーザーの特定のアクション（例：商品購入、問い合わせ）。</p></div>
+                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-teal-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">📊 CVR (コンバージョン率)</h3><p class="text-gray-600 mt-2 text-sm">広告クリックのうち、CVに至った割合。LPの有効性を示す重要指標。</p><div class="mt-4 space-y-2"><div class="formula">CVR(%) = (CV数 ÷ クリック数) × 100</div></div></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-sky-700 border-b-2 border-sky-200 pb-2 mb-4">コスト指標</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-sky-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">🖱️ CPC (クリック単価)</h3><p class="text-gray-600 mt-2 text-sm">広告が1回クリックされるたびに発生する費用。</p><div class="mt-4 space-y-2"><div class="formula">CPC = 広告費 ÷ クリック数</div></div></div>
+                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-sky-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">👁️ CPM (インプレッション単価)</h3><p class="text-gray-600 mt-2 text-sm">広告が1000回表示されるたびにかかる費用。認知度向上の指標として用いられます。</p><div class="mt-4 space-y-2"><div class="formula">CPM = (広告費 ÷ IMP) × 1000</div></div></div>
+                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-sky-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">💰 CPA (顧客獲得単価)</h3><p class="text-gray-600 mt-2 text-sm">1件のCVを獲得するためにかかった費用。費用対効果の最重要指標の一つ。</p><div class="mt-4 space-y-2"><div class="formula">CPA = 広告費 ÷ CV数</div><div class="formula">CPA = CPC ÷ CVR</div></div></div>
+                                </div>
+                            </div>
+                            <div>
+                                 <h3 class="text-2xl font-semibold text-green-700 border-b-2 border-green-200 pb-2 mb-4">収益性指標</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">📈 ROAS (広告費用対効果)</h3><p class="text-gray-600 mt-2 text-sm">広告費に対してどれだけの売上が発生したかを示す指標。ECサイトで特に重要視されます。</p><div class="mt-4 space-y-2"><div class="formula">ROAS(%) = (売上 ÷ 広告費) × 100</div></div></div>
+                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">💹 ROI (投資利益率)</h3><p class="text-gray-600 mt-2 text-sm">投下した広告費から、どれだけの利益が生まれたかを示す指標。より事業貢献度を測れます。</p><div class="mt-4 space-y-2"><div class="formula">ROI(%) = (利益 ÷ 広告費) × 100</div></div></div>
+                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-red-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">🛑 限界CPA</h3><p class="text-gray-600 mt-2 text-sm">1CVあたりにかけられる広告費の上限額。これを超えると赤字になる損益分岐点。</p><div class="mt-4 space-y-2"><div class="formula">限界CPA = 平均顧客単価 − 原価</div></div></div>
+                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-blue-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">✅ 目標CPA</h3><p class="text-gray-600 mt-2 text-sm">目標利益を確保するために、1CVあたりに許容される広告費。</p><div class="mt-4 space-y-2"><div class="formula">目標CPA = 限界CPA − 確保したい利益</div></div></div>
+                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">👑 LTV (顧客生涯価値)</h3><p class="text-gray-600 mt-2 text-sm">一人の顧客が取引期間全体でもたらす総利益。リピート商材で重要。</p><div class="mt-4 space-y-2"><div class="formula">LTV = 顧客単価 × 粗利率 × 購買頻度 × 契約期間</div></div></div>
+                                </div>
+                            </div>
+                              <div>
+                                <h3 class="text-2xl font-semibold text-purple-700 border-b-2 border-purple-200 pb-2 mb-4">計画立案指標</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-purple-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">🔢 必要CV数</h3><p class="text-gray-600 mt-2 text-sm">設定した目標利益を達成するために必要なCVの件数。</p><div class="mt-4 space-y-2"><div class="formula">必要CV数 = 目標利益 ÷ 1CVあたりの利益</div></div></div>
+                                    <div class="knowledge-card bg-white p-5 rounded-lg shadow-md border-l-4 border-purple-500"><h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">💸 必要広告予算</h3><p class="text-gray-600 mt-2 text-sm">算出された数値を基に、最終的に必要となる広告費用の総額。</p><div class="mt-4 space-y-2"><div class="formula">必要広告予算 = 必要CV数 × 目標CPA</div></div></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -243,14 +273,12 @@
         </div>
     </div>
 
-    <!-- ログアウト状態の時に表示されるメッセージ -->
     <div id="login-prompt">
         <div class="min-h-screen flex items-center justify-center bg-gray-50">
             <div class="max-w-md w-full bg-white p-8 rounded-xl shadow-lg text-center">
                 <h2 id="auth-title" class="text-2xl font-bold text-teal-700">ログイン</h2>
-                <p class="text-gray-600 mt-2 mb-6">ツールを利用するにはログインが必要です。</p>
+                <p id="auth-subtitle" class="text-gray-600 mt-2 mb-6">ツールを利用するにはログインが必要です。</p>
                 
-                <!-- ▼▼▼ メール・パスワード認証用のフォーム ▼▼▼ -->
                 <form id="auth-form" class="space-y-4">
                     <div>
                         <input type="email" id="email-input" placeholder="メールアドレス" required class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500">
@@ -280,7 +308,6 @@
         <div id="tooltip-formula" class="formula"></div>
     </div>
 
-<!-- ▼▼▼ メール・パスワード認証用に書き換えたスクリプト ▼▼▼ -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     // DOM要素の取得
@@ -291,6 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailInput = document.getElementById('email-input');
     const passwordInput = document.getElementById('password-input');
     const authTitle = document.getElementById('auth-title');
+    const authSubtitle = document.getElementById('auth-subtitle');
     const authButton = document.getElementById('auth-button');
     const authPromptText = document.getElementById('auth-prompt-text');
     const toggleAuthModeLink = document.getElementById('toggle-auth-mode');
@@ -298,18 +326,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const authSuccess = document.getElementById('auth-success');
     
     let plannerInitialized = false;
-    let isSignUpMode = false; // 初期状態はログインモード
+    let isSignUpMode = false;
 
-    // お客様のSupabaseプロジェクト情報（入力済み）
+    // お客様のSupabaseプロジェクト情報
     const supabaseUrl = 'https://zflsgqzuvcnahxmthjpk.supabase.co';
     const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmbHNncXp1dmNuYWh4bXRoanBrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1MTE1NzMsImV4cCI6MjA2NzA4NzU3M30.P1dLtsIorP7PoKkL97UCJ3UmIm_OQFu0NPJNmCOZV1I';
 
-    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-    // ★【修正点】ここが最も重要な修正箇所です ★
-    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
     const supabaseClient = supabase.createClient(supabaseUrl, supabaseAnonKey);
 
-    // UIの表示/非表示を更新する関数
     const updateUserState = (user) => {
         if (user) {
             appContainer.classList.remove('hidden');
@@ -324,32 +348,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // ログイン/新規登録モードを切り替える関数
     const toggleAuthMode = () => {
         isSignUpMode = !isSignUpMode;
         authError.classList.add('hidden');
         authSuccess.classList.add('hidden');
+        authForm.reset();
         
         if (isSignUpMode) {
             authTitle.textContent = '新規登録';
+            authSubtitle.textContent = 'ツールを利用するには新規登録が必要です。';
             authButton.textContent = '登録する';
             authPromptText.textContent = 'すでにアカウントをお持ちですか？';
             toggleAuthModeLink.textContent = 'ログイン';
         } else {
             authTitle.textContent = 'ログイン';
+            authSubtitle.textContent = 'ツールを利用するにはログインが必要です。';
             authButton.textContent = 'ログイン';
             authPromptText.textContent = 'アカウントをお持ちでないですか？';
             toggleAuthModeLink.textContent = '新規登録';
         }
     };
 
-    // モード切り替えリンクのイベントリスナー
     toggleAuthModeLink.addEventListener('click', (e) => {
         e.preventDefault();
         toggleAuthMode();
     });
 
-    // フォーム送信時のイベントリスナー
     authForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = emailInput.value;
@@ -358,18 +382,14 @@ document.addEventListener('DOMContentLoaded', () => {
         authSuccess.classList.add('hidden');
 
         try {
-            let response;
             if (isSignUpMode) {
-                // 新規登録モード
-                response = await supabaseClient.auth.signUp({ email, password });
-                if (response.error) throw response.error;
+                const { data, error } = await supabaseClient.auth.signUp({ email, password });
+                if (error) throw error;
                 authSuccess.textContent = '確認メールを送信しました。メール内のリンクをクリックして登録を完了してください。';
                 authSuccess.classList.remove('hidden');
             } else {
-                // ログインモード
-                response = await supabaseClient.auth.signInWithPassword({ email, password });
-                if (response.error) throw response.error;
-                // ログイン成功時のUI更新はonAuthStateChangeに任せる
+                const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+                if (error) throw error;
             }
         } catch (error) {
             authError.textContent = `エラー: ${error.message}`;
@@ -377,13 +397,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // ログアウトボタンのイベントリスナー
     logoutButton.addEventListener('click', () => {
         supabaseClient.auth.signOut();
     });
 
-    // 認証状態の変化を監視
-    supabaseClient.auth.onAuthStateChange((event, session) => {
+    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+    // ★【修正点】ここが「お出迎え機能」の追加箇所です ★
+    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+    supabaseClient.auth.onAuthStateChange(async (event, session) => {
+        // ログイン、ログアウト、トークン更新など、認証状態が変わるたびに実行
+        updateUserState(session ? session.user : null);
+
+        // ★ 新規登録後、メールのリンクから戻ってきた場合（SIGNED_INイベント）の特別処理
+        if (event === 'SIGNED_IN' && !plannerInitialized) {
+            // URLからハッシュ（#以降）を削除して、見た目をクリーンにする
+            history.replaceState(null, null, window.location.pathname);
+        }
+    });
+
+    // 初期読み込み時のセッション情報を確認
+    // （お出迎え機能の本質ではないが、ページリロード時のログイン維持に役立つ）
+    supabaseClient.auth.getSession().then(({ data: { session } }) => {
         updateUserState(session ? session.user : null);
     });
 });
@@ -923,11 +957,6 @@ function initializePlanner() {
             
             const targetCpaFromProfit = limitCpa - profitPerCv;
             const targetRoas = targetCpaFromProfit > 0 ? (avgCustomerValue / targetCpaFromProfit) * 100 : 0;
-            
-            let finalTargetRoas = targetRoas;
-            if (cs.hasOwnProperty('targetRoas')) {
-                finalTargetRoas = cs.targetRoas;
-            }
             const targetRoi = targetCpaFromProfit > 0 ? ((limitCpa - targetCpaFromProfit) / targetCpaFromProfit) * 100 : 0;
             
             document.getElementById('a-targetProfit').value = cs.targetProfit || '';
@@ -937,14 +966,9 @@ function initializePlanner() {
             document.getElementById('a-cogs-wrapper').classList.remove('hidden');
             document.getElementById('a-margin-wrapper').classList.add('hidden');
             document.getElementById('a-profitPerCv').value = profitPerCv;
-            document.getElementById('a-targetRoas').value = finalTargetRoas.toFixed(1);
+            document.getElementById('a-targetRoas').value = targetRoas.toFixed(1);
             document.getElementById('a-targetRoi').value = targetRoi.toFixed(1);
-            
-            if (cs.hasOwnProperty('targetRoas')) {
-                document.getElementById('a-roas-btn').click();
-            } else {
-                document.getElementById('a-profit-btn').click();
-            }
+            document.getElementById('a-profit-btn').click();
 
             document.getElementById('common-cvr').value = cs.cvr || '';
             document.getElementById('common-cpc').value = cs.cpc || '';
