@@ -353,7 +353,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             if (isSignUpMode) {
-                const { data, error } = await supabaseClient.auth.signUp({ email, password });
+                const { data, error } = await supabaseClient.auth.signUp({ 
+                    email, 
+                    password,
+                    options: {
+                        // ★重要：リダイレクト先を、新しく作るcallback.htmlに指定します
+                        emailRedirectTo: `${window.location.origin}/callback.html`
+                    }
+                });
                 if (error) throw error;
                 authSuccess.textContent = '確認メールを送信しました。メール内のリンクをクリックして登録を完了してください。';
                 authSuccess.classList.remove('hidden');
@@ -382,10 +389,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // 2. 次に、その後の認証状態の変化を監視する
         supabaseClient.auth.onAuthStateChange((_event, session) => {
             updateUserState(session ? session.user : null);
-            // メールリンクから戻ってきた場合、URLから不要な情報を削除して見た目をきれいにする
-            if (_event === "SIGNED_IN" || _event === "USER_UPDATED") {
-                history.replaceState({}, document.title, window.location.pathname);
-            }
         });
     });
 });
@@ -1484,9 +1487,6 @@ function initializePlanner() {
     populateCaseStudies();
     populateBenchmarks();
     populateOptimizationGuide();
-    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-    // ★【修正点】用語集を生成する関数を呼び出します ★
-    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
     populateKnowledge();
 }
 </script>
