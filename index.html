@@ -357,8 +357,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     email, 
                     password,
                     options: {
-                        // ★重要：リダイレクト先を、新しく作るcallback.htmlに指定します
-                        emailRedirectTo: `${window.location.origin}/callback.html`
+                        // ★重要：リダイレクト先を、新しいファイル名 auth-verify.html に変更します
+                        emailRedirectTo: `${window.location.origin}/auth-verify.html`
                     }
                 });
                 if (error) throw error;
