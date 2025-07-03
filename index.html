@@ -300,13 +300,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let plannerInitialized = false;
     let isSignUpMode = false; // 初期状態はログインモード
 
-    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-    // ★ ここに、あなたのSupabaseプロジェクトの情報を貼り付けてください ★
-    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-    const supabaseUrl = 'https://zflsgqzuvcnahxmthjpk.supabase.co'; // 例: 'https://abcdefg.supabase.co'
-    const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmbHNncXp1dmNuYWh4bXRoanBrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1MTE1NzMsImV4cCI6MjA2NzA4NzU3M30.P1dLtsIorP7PoKkL97UCJ3UmIm_OQFu0NPJNmCOZV1I'; // 例: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9. ...'
+    // お客様のSupabaseプロジェクト情報（入力済み）
+    const supabaseUrl = 'https://zflsgqzuvcnahxmthjpk.supabase.co';
+    const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmbHNncXp1dmNuYWh4bXRoanBrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1MTE1NzMsImV4cCI6MjA2NzA4NzU3M30.P1dLtsIorP7PoKkL97UCJ3UmIm_OQFu0NPJNmCOZV1I';
 
-    const supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
+    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+    // ★【修正点】ここが最も重要な修正箇所です ★
+    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+    const supabaseClient = supabase.createClient(supabaseUrl, supabaseAnonKey);
 
     // UIの表示/非表示を更新する関数
     const updateUserState = (user) => {
@@ -360,13 +361,13 @@ document.addEventListener('DOMContentLoaded', () => {
             let response;
             if (isSignUpMode) {
                 // 新規登録モード
-                response = await supabase.auth.signUp({ email, password });
+                response = await supabaseClient.auth.signUp({ email, password });
                 if (response.error) throw response.error;
                 authSuccess.textContent = '確認メールを送信しました。メール内のリンクをクリックして登録を完了してください。';
                 authSuccess.classList.remove('hidden');
             } else {
                 // ログインモード
-                response = await supabase.auth.signInWithPassword({ email, password });
+                response = await supabaseClient.auth.signInWithPassword({ email, password });
                 if (response.error) throw response.error;
                 // ログイン成功時のUI更新はonAuthStateChangeに任せる
             }
@@ -378,11 +379,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // ログアウトボタンのイベントリスナー
     logoutButton.addEventListener('click', () => {
-        supabase.auth.signOut();
+        supabaseClient.auth.signOut();
     });
 
     // 認証状態の変化を監視
-    supabase.auth.onAuthStateChange((event, session) => {
+    supabaseClient.auth.onAuthStateChange((event, session) => {
         updateUserState(session ? session.user : null);
     });
 });
